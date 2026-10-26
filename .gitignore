@@ -1,0 +1,27 @@
+# WorkBuddy 工作记忆 —— 含手机号等私人信息，严禁公开
+.workbuddy/
+
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# 简历源文件（如日后放入本目录，默认不公开）
+*.pdf
+*.docx
+
+# 本地发布脚本（无需公开）
+*.command
