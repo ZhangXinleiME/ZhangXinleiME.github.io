@@ -354,6 +354,50 @@ HERO_TAGS=['Human–Machine–AI Collaboration','Multi-Agent Decision Making','L
 EMAIL='ZhangShine@smail.nju.edu.cn'
 NAVIDS=['about','education','experience','positioning','research','news','publications','grants','projects','honors','contact']
 
+# ---- SEO ----
+SITE='https://zhangxinleime.github.io'
+
+# 搜索结果里显示的标题。含姓名 + 单位 + 研究方向，便于被长尾词命中。
+SEO_TITLE={
+ 'zh':'张鑫磊 | 南京大学博士研究生 · 人-机-AI 协同与 AI Agent 智能决策',
+ 'en':'Xinlei Zhang | Ph.D. Candidate, Nanjing University · Human–Machine–AI Collaboration',
+}
+# 搜索结果摘要。控制在 150 字以内，否则被截断。
+SEO_DESC={
+ 'zh':'张鑫磊，南京大学管理科学与工程博士研究生（控制科学与智能工程系培养），研究人-机-AI 协同、多智能体协同配置与 LLM Agent 智能决策。博士阶段已发表论文 13 篇（第一作者 8 篇），现于腾讯小微 Agent 核心业务从事大模型应用算法实践。求职联系：ZhangShine@smail.nju.edu.cn',
+ 'en':'Ph.D. candidate at Nanjing University. Research on human–machine–AI collaboration, multi-agent task configuration, and LLM agent decision making. 13 papers, 8 first-authored.',
+}
+SEO_KEYWORDS={
+ 'zh':'张鑫磊,南京大学,博士研究生,人机AI协同,人-机-AI 协同,AI Agent,智能决策,多智能体系统,角色配置,E-CARGO,组合优化,大模型评测,管理科学与工程,控制科学与智能工程系,求职,个人主页',
+ 'en':'Xinlei Zhang,Nanjing University,PhD candidate,Human-Machine-AI Collaboration,AI Agent,Multi-Agent Systems,Role Assignment,E-CARGO,Combinatorial Optimization,LLM Evaluation,Management Science and Engineering,academic job market',
+}
+
+def jsonld(lang):
+    """Person 结构化数据 — 让搜索引擎把本页识别为「人物主页」，
+    有机会在结果页右侧展示知识面板，并明确姓名的中英对应关系。"""
+    import json
+    d={
+      "@context":"https://schema.org",
+      "@type":"Person",
+      "name":"张鑫磊" if lang=='zh' else "Xinlei Zhang",
+      "alternateName":["Xinlei Zhang","张鑫磊","ZXL"],
+      "url":SITE+('/' if lang=='zh' else '/en.html'),
+      "mainEntityOfPage":{"@type":"WebPage","@id":SITE+('/' if lang=='zh' else '/en.html')},
+      "image":SITE+'/assets/portrait.jpg',
+      "email":"mailto:"+EMAIL,
+      "jobTitle":"博士研究生" if lang=='zh' else "Ph.D. Candidate",
+      "description":SEO_DESC[lang],
+      "affiliation":{"@type":"CollegeOrUniversity","name":"南京大学" if lang=='zh' else "Nanjing University","url":"https://www.nju.edu.cn","sameAs":"https://en.wikipedia.org/wiki/Nanjing_University"},
+      "alumniOf":[
+        {"@type":"CollegeOrUniversity","name":"南京大学" if lang=='zh' else "Nanjing University"},
+        {"@type":"CollegeOrUniversity","name":"江南大学" if lang=='zh' else "Jiangnan University"},
+      ],
+      "knowsAbout":(["人-机-AI 协同","多智能体系统","智能任务配置","角色协作理论 E-CARGO","组合优化","强化学习","大模型评测","AI Agent 智能决策"] if lang=='zh'
+                    else ["Human–Machine–AI Collaboration","Multi-Agent Systems","Intelligent Task Allocation","Role-Based Collaboration (E-CARGO)","Combinatorial Optimization","Reinforcement Learning","LLM Evaluation","AI Agent Decision Making"]),
+      "knowsLanguage":["zh-CN","en"],
+    }
+    return json.dumps(d,ensure_ascii=False,separators=(',',':'))
+
 ICON_MAIL='<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>'
 ICON_EXT='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M19 5l-9 9"/><path d="M19 13v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/></svg>'
 ICON_ARROW='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16m-7-7 7 7-7 7"/></svg>'
@@ -372,15 +416,32 @@ def make_page(lang):
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="{plain(L['intro'])}">
+<title>{h(SEO_TITLE[lang])}</title>
+<meta name="description" content="{plain(SEO_DESC[lang])}">
+<meta name="keywords" content="{h(SEO_KEYWORDS[lang])}">
+<meta name="author" content="{h(L['person'])}">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
 <meta name="theme-color" content="#f6f8fb">
+<link rel="canonical" href="{SITE}/{'' if lang=='zh' else 'en.html'}">
+<link rel="alternate" hreflang="zh-CN" href="{SITE}/">
+<link rel="alternate" hreflang="en" href="{SITE}/en.html">
+<link rel="alternate" hreflang="x-default" href="{SITE}/">
 <meta property="og:type" content="profile">
-<meta property="og:title" content="{title}">
-<meta property="og:description" content="{plain(L['intro'])}">
-<meta property="og:image" content="assets/portrait.jpg">
-<title>{title}</title>
+<meta property="og:site_name" content="{h(L['person'])}">
+<meta property="og:locale" content="{'zh_CN' if lang=='zh' else 'en_US'}">
+<meta property="og:url" content="{SITE}/{'' if lang=='zh' else 'en.html'}">
+<meta property="og:title" content="{h(SEO_TITLE[lang])}">
+<meta property="og:description" content="{plain(SEO_DESC[lang])}">
+<meta property="og:image" content="{SITE}/assets/portrait.jpg">
+<meta property="profile:first_name" content="{'鑫磊' if lang=='zh' else 'Xinlei'}">
+<meta property="profile:last_name" content="{'张' if lang=='zh' else 'Zhang'}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{h(SEO_TITLE[lang])}">
+<meta name="twitter:description" content="{plain(SEO_DESC[lang])}">
+<meta name="twitter:image" content="{SITE}/assets/portrait.jpg">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="stylesheet" href="style.css">
+<script type="application/ld+json">{jsonld(lang)}</script>
 </head>
 <body>
 <a href="#main" class="skip-link">{h(L['skip'])}</a>
@@ -495,3 +556,42 @@ def make_page(lang):
 for lang,out in [('zh','index.html'),('en','en.html')]:
     (ROOT/out).write_text(make_page(lang),encoding='utf-8')
     print('Created',ROOT/out)
+
+# ---- SEO 附属文件 ----
+import datetime
+_today=datetime.date.today().isoformat()
+
+# sitemap.xml：告诉搜索引擎本站有哪些页面、哪个是中文哪个是英文
+_sitemap=f'''<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>{SITE}/</loc>
+    <lastmod>{_today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="{SITE}/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="{SITE}/en.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="{SITE}/"/>
+  </url>
+  <url>
+    <loc>{SITE}/en.html</loc>
+    <lastmod>{_today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="{SITE}/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="{SITE}/en.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="{SITE}/"/>
+  </url>
+</urlset>
+'''
+(ROOT/'sitemap.xml').write_text(_sitemap,encoding='utf-8')
+print('Created',ROOT/'sitemap.xml')
+
+# robots.txt：允许全部抓取，并指明 sitemap 位置
+_robots=f'''User-agent: *
+Allow: /
+
+Sitemap: {SITE}/sitemap.xml
+'''
+(ROOT/'robots.txt').write_text(_robots,encoding='utf-8')
+print('Created',ROOT/'robots.txt')
