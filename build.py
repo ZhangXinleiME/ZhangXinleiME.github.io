@@ -244,12 +244,12 @@ WORK={
 # (dates, school, degree, badge, dept_line, detail_line)
 EDUCATION={
 'zh':[
-('2023.09 — 预计 2027.06','南京大学','管理科学与工程 · 博士研究生','985 · C9','工程管理学院 · 控制科学与智能工程系培养','专业排名 1/24，获国家奖学金、英才奖学金'),
+('2023.09 — 预计 2027.06','南京大学','管理科学与工程 · 博士研究生','985 · C9','工程管理学院 · 控制科学与智能工程系培养','导师：周献中 教授、孙宇祥 副教授 · 专业排名 1/24，获国家奖学金、英才奖学金'),
 ('2020.09 — 2023.06','南京大学','电子信息 · 硕士','985 · C9','工程管理学院','专业排名 3/37，获华为奖学金、校一等奖学金'),
 ('2016.09 — 2020.06','江南大学','自动化 · 工学学士','211','物联网工程学院','专业排名 2/219，获国家奖学金、远翔特别奖学金'),
 ],
 'en':[
-('Sep 2023 — Expected Jun 2027','Nanjing University','Ph.D. Candidate · Management Science and Engineering','985 · C9','School of Engineering Management · Dept. of Control Science and Intelligence Engineering','Ranked 1/24 · National Scholarship, Yingcai Scholarship'),
+('Sep 2023 — Expected Jun 2027','Nanjing University','Ph.D. Candidate · Management Science and Engineering','985 · C9','School of Engineering Management · Dept. of Control Science and Intelligence Engineering','Advisors: Prof. Xianzhong Zhou, Assoc. Prof. Yuxiang Sun · Ranked 1/24 · National Scholarship, Yingcai Scholarship'),
 ('Sep 2020 — Jun 2023','Nanjing University','M.Eng. · Electronic Information','985 · C9','School of Engineering Management','Ranked 3/37 · Huawei Scholarship, University First-Class Scholarship'),
 ('Sep 2016 — Jun 2020','Jiangnan University','B.Eng. · Automation','211','School of Internet of Things Engineering','Ranked 2/219 · National Scholarship, Yuanxiang Special Scholarship'),
 ]}
@@ -277,7 +277,7 @@ LABEL={
  'title':'张鑫磊 · 个人主页','brand':'张鑫磊 · 个人主页',
  'tagline':'人-机-AI 协同 · 多智能体协同配置 · LLM Agent 决策',
  'person':'张鑫磊','subtitle':'Xinlei Zhang',
- 'role':'南京大学 · 管理科学与工程博士研究生（控制科学与智能工程系培养 · 预计 2027.06 毕业）',
+ 'role':'南京大学工程管理学院 · 管理科学与工程博士研究生（控制科学与智能工程系培养 · 预计 2027.06 毕业）',
  'intro':'我的研究聚焦于 **AI 从辅助工具向自主决策主体演进**过程中，复杂智能系统的**协同组织、任务配置与优化决策**问题。以多智能体系统、角色协作理论与组合优化为基础，研究 AI 介入如何重塑主体能力结构、异构主体如何实现高效协同，以及自主智能体如何可信地参与决策；**博士阶段已发表第一作者论文 8 篇**，代表性成果见于 IEEE TSMC: Systems、IEEE THMS 等期刊。与此同时，我在**腾讯小微 Agent 核心业务**从事大模型应用算法实践，负责 RAG 链路评测、智能体多维评测与 LLM Judge 校准、SFT/DPO 数据建设与后训练验证，让研究问题始终接受真实线上系统的检验。',
  'portraitAlt':'张鑫磊的证件照',
  'nav':['关于我','教育背景','研究与实习','求职意向','研究方向','近一年动态','论文成果','科研课题','项目实践','荣誉奖励','联系我'],
@@ -372,7 +372,7 @@ SEO_DESC={
  'en':'Ph.D. candidate at Nanjing University. Research on human–machine–AI collaboration, multi-agent task configuration, and LLM agent decision making. 13 papers, 8 first-authored.',
 }
 SEO_KEYWORDS={
- 'zh':'张鑫磊,南京大学,博士研究生,人机AI协同,人-机-AI 协同,AI Agent,智能决策,多智能体系统,角色配置,E-CARGO,组合优化,大模型评测,管理科学与工程,控制科学与智能工程系,求职,个人主页',
+ 'zh':'张鑫磊,南京大学张鑫磊,南京大学,工程管理学院,控制科学与智能工程系,智能装备新技术研究中心,博士研究生,周献中,孙宇祥,人机AI协同,人-机-AI 协同,AI Agent,智能决策,多智能体系统,角色配置,E-CARGO,组合优化,大模型评测,管理科学与工程,求职,个人主页',
  'en':'Xinlei Zhang,Nanjing University,PhD candidate,Human-Machine-AI Collaboration,AI Agent,Multi-Agent Systems,Role Assignment,E-CARGO,Combinatorial Optimization,LLM Evaluation,Management Science and Engineering,academic job market',
 }
 
@@ -384,14 +384,19 @@ def jsonld(lang):
       "@context":"https://schema.org",
       "@type":"Person",
       "name":"张鑫磊" if lang=='zh' else "Xinlei Zhang",
-      "alternateName":["Xinlei Zhang","张鑫磊","ZXL"],
+      "alternateName":["Xinlei Zhang","张鑫磊","ZHANG Xinlei","Zhang Xinlei"],
       "url":SITE+('/' if lang=='zh' else '/en.html'),
       "mainEntityOfPage":{"@type":"WebPage","@id":SITE+('/' if lang=='zh' else '/en.html')},
       "image":SITE+'/assets/portrait.jpg',
       "email":"mailto:"+EMAIL,
       "jobTitle":"博士研究生" if lang=='zh' else "Ph.D. Candidate",
       "description":SEO_DESC[lang],
-      "affiliation":{"@type":"CollegeOrUniversity","name":"南京大学" if lang=='zh' else "Nanjing University","url":"https://www.nju.edu.cn","sameAs":"https://en.wikipedia.org/wiki/Nanjing_University"},
+      "affiliation":[
+        {"@type":"CollegeOrUniversity","name":"南京大学" if lang=='zh' else "Nanjing University","url":"https://www.nju.edu.cn","sameAs":"https://en.wikipedia.org/wiki/Nanjing_University"},
+        {"@type":"Organization","name":"南京大学工程管理学院" if lang=='zh' else "School of Engineering Management, Nanjing University","url":"https://sme.nju.edu.cn"},
+        {"@type":"Organization","name":"南京大学智能装备新技术研究中心" if lang=='zh' else "Research Center for Novel Technology of Intelligent Equipment, Nanjing University"},
+      ],
+      "worksFor":{"@type":"Organization","name":"南京大学" if lang=='zh' else "Nanjing University"},
       "alumniOf":[
         {"@type":"CollegeOrUniversity","name":"南京大学" if lang=='zh' else "Nanjing University"},
         {"@type":"CollegeOrUniversity","name":"江南大学" if lang=='zh' else "Jiangnan University"},
