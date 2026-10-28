@@ -116,7 +116,7 @@ RESEARCH={
 # Dual-track positioning: (eyebrow, title, summary, [(label, text), ...])
 TRACKS={
 'zh':[
-('TRACK A / ACADEMIA','高校教职 讲师 / 师资博士后',
+('TRACK A / ACADEMIA','高校教职 讲师 / 研究员 / 助理教授',
  '匹配控制科学与工程、管理科学与工程及人工智能交叉方向，具备独立开题能力、基金申报经历与完整教学准备。',
  [('研究主线','聚焦于人工智能从能力增强工具向自主决策主体演进过程中，复杂智能系统的协同组织、任务配置与优化决策问题。以多智能体系统、角色协作理论与组合优化为基础，围绕「智能增强与能力建模 — 异构主体协同与任务优化 — 混合智能决策 — 自主智能体可信协作」形成持续深入的研究主线，问题明确、方法自洽且尚有大量未解问题，可支撑入职后独立开题与长期产出。'),
   ('研究能力','在机制建模、智能算法与系统实现三个层面均有积累：机制层面建立主体能力、协作关系与任务结构的可计算表征；算法层面覆盖多智能体决策、强化学习、组合优化与分层求解；系统层面具备大模型评测、后训练与 Agent 工程化能力。既能把实际问题抽象为科学问题，也能把模型实现为可验证的系统。'),
@@ -132,7 +132,7 @@ TRACKS={
   ('工程落地','参与 10+ 科研与工程课题、交付 20+ 软件系统与算法模块；核心参与的 AI 产品累计注册用户 1 万+、周调用 5,000+。')]),
 ],
 'en':[
-('TRACK A / ACADEMIA','Faculty — Lecturer / Postdoctoral Fellow',
+('TRACK A / ACADEMIA','Faculty — Lecturer / Research Fellow / Assistant Professor',
  'Targeting control science & engineering, management science & engineering, and AI-interdisciplinary departments, with proven ability to define independent research directions, grant experience, and full teaching preparation.',
  [('Research agenda','My work addresses collaborative organization, task configuration, and optimal decision making in complex intelligent systems as AI evolves from a capability-augmenting tool into an autonomous decision-making agent. Grounded in multi-agent systems, role-based collaboration theory, and combinatorial optimization, it follows a sustained line: intelligence augmentation and capability modeling — heterogeneous agent collaboration and task optimization — hybrid intelligence decision making — trustworthy collaboration with autonomous agents. The agenda is well-posed, methodologically coherent, and far from exhausted — a solid basis for an independent research program.'),
   ('Research capability','Depth across three levels — mechanism, algorithm, and system. At the mechanism level, building computable representations of agent capability, collaboration relations, and task structure; at the algorithm level, multi-agent decision making, reinforcement learning, combinatorial optimization, and hierarchical solvers; at the system level, LLM evaluation, post-training, and agent engineering. I can both abstract practical problems into scientific ones and realize models as verifiable systems.'),
