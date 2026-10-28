@@ -357,6 +357,10 @@ NAVIDS=['about','education','experience','positioning','research','news','public
 # ---- SEO ----
 SITE='https://zhangxinleime.github.io'
 
+# Google Search Console 所有权验证码。验证通过后也不要删——删掉会导致验证失效、
+# Search Console 停止提供数据。换站点时在 GSC 重新获取并替换此处。
+GOOGLE_VERIFY='HGMWTCL0xuLLuoXf51bVLZwl76zY8WahN2dQPouRXxk'
+
 # 搜索结果里显示的标题。含姓名 + 单位 + 研究方向，便于被长尾词命中。
 SEO_TITLE={
  'zh':'张鑫磊 | 南京大学博士研究生 · 人-机-AI 协同与 AI Agent 智能决策',
@@ -421,6 +425,7 @@ def make_page(lang):
 <meta name="keywords" content="{h(SEO_KEYWORDS[lang])}">
 <meta name="author" content="{h(L['person'])}">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="google-site-verification" content="{GOOGLE_VERIFY}">
 <meta name="theme-color" content="#f6f8fb">
 <link rel="canonical" href="{SITE}/{'' if lang=='zh' else 'en.html'}">
 <link rel="alternate" hreflang="zh-CN" href="{SITE}/">
